@@ -1,4 +1,3 @@
-Here is your complete `README.md` content, fully formatted and ready to copy into your project:
 
 ---
 
@@ -148,19 +147,6 @@ pip install -r requirements.txt
 
 ---
 
-## 🚫 GitHub Push Issues with API Keys
-
-If you accidentally pushed a secret:
-
-```bash
-git reset --soft HEAD~1
-# remove secret from code
-git add .
-git commit -m "Removed API key"
-git push --force
-```
-
-You can also allow push temporarily at the link GitHub provides (not recommended).
 
 ---
 
@@ -175,7 +161,7 @@ GitHub: [anugrahaantoo](https://github.com/anugrahaantoo)
 
 ```
 
----
 
-Let me know if you’d like the `requirements.txt` shown here as well.
+
+
 ```
