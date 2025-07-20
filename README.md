@@ -2,7 +2,7 @@ Here is your complete `README.md` content, fully formatted and ready to copy int
 
 ---
 
-````markdown
+
 # 🗣️ Voice Chatbot using GPT (Terminal + Web)
 
 This project enables **voice-based interaction with a chatbot powered by OpenAI's GPT API**. You can run it either in the **terminal** or via a **Flask web interface**. It uses `speech_recognition` to capture voice input and `pyttsx3` or `gTTS` for speech output.
