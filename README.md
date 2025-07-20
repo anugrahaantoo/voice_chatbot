@@ -1,52 +1,55 @@
+Here is your complete `README.md` content, fully formatted and ready to copy into your project:
 
+---
 
-```markdown
-# 🎤 Voice Chatbot Web App (Flask + Speech Recognition + TTS)
+````markdown
+# 🗣️ Voice Chatbot using GPT (Terminal + Web)
 
-This project is a **voice-enabled chatbot** built with Python and Flask.  
-It runs in the browser, captures voice input via the Web Speech API, sends it to a Flask backend, and replies using rule-based logic. The reply is spoken aloud using the system’s TTS engine.
+This project enables **voice-based interaction with a chatbot powered by OpenAI's GPT API**. You can run it either in the **terminal** or via a **Flask web interface**. It uses `speech_recognition` to capture voice input and `pyttsx3` or `gTTS` for speech output.
 
 ---
 
 ## ✅ Features
 
-- 🎙️ Voice input from browser (via Web Speech API)
-- 💬 Rule-based chatbot responses
-- 🔊 Replies spoken via `pyttsx3` (Python text-to-speech)
-- 🧠 Lightweight and works offline (no OpenAI/GPT dependency)
-- 🖼️ Clean and responsive web UI
-- 📝 Chat history visible on the page
+- 🎤 Voice input via microphone (real-time)
+- 🤖 GPT-powered intelligent responses
+- 🧏 Speech output with text-to-speech
+- 💻 Terminal-based interface
+- 🌐 Web-based interface (Flask)
+- 📡 Offline fallback option (no API)
 
 ---
 
 ## 📁 Project Structure
 
-```
-
-voice\_chatbot/
-├── venv/                    # Python virtual environment (not included in repo)
-├── web\_chatbot.py           # Flask backend for voice chatbot
-├── requirements.txt         # Python dependencies
-└── templates/
-└── index.html           # Frontend HTML with voice capture and chat UI
-
+```text
+voice_chatbot/
+├── chatbot.py          # Terminal version
+├── web_chatbot.py      # Flask web version
+├── offline_gpt.py      # Offline fallback logic
+├── templates/
+│   └── index.html      # Web UI template
+├── requirements.txt    # All Python dependencies
+├── .gitignore          # Excludes .env, __pycache__, etc.
+└── README.md           # You're reading this!
 ````
 
 ---
 
-## ⚙️ Setup Instructions
+## 🛠️ Setup Instructions
 
 ### 1. Clone the repository
-```bash
-git clone https://github.com/your-username/voice-chatbot.git
-cd voice-chatbot
-````
 
-### 2. Create and activate a virtual environment
+```bash
+git clone https://github.com/anugrahaantoo/voice_chatbot.git
+cd voice_chatbot
+```
+
+### 2. Create & activate virtual environment
 
 ```bash
 python3 -m venv venv
-source venv/bin/activate  # For Windows: venv\Scripts\activate
+source venv/bin/activate  # On Windows: venv\\Scripts\\activate
 ```
 
 ### 3. Install dependencies
@@ -57,57 +60,122 @@ pip install -r requirements.txt
 
 ---
 
-## 🚀 Run the App
+## 🔑 Set up your OpenAI API Key
+
+1. Visit: [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)
+2. Create a new key
+3. Create a `.env` file and add:
+
+```env
+OPENAI_API_KEY=sk-xxxxxx...
+```
+
+> 🔐 Never expose your API key in code. Use `.env` to keep it secure.
+
+---
+
+## 🚀 How to Run
+
+### Terminal Version
+
+```bash
+python chatbot.py
+```
+
+Say something into your microphone — the chatbot listens and replies with speech.
+
+---
+
+### Web Version
 
 ```bash
 python web_chatbot.py
 ```
 
-Then open your browser and go to:
+Then go to: `http://127.0.0.1:5000`
 
-```
-http://127.0.0.1:5000/
-```
+* Click **Start Talking**
+* Speak your message
+* GPT replies and voice plays
+* Past messages are shown below
 
-Click the 🎤 "Start Talking" button and speak into your mic.
+> ✅ Allow microphone access in your browser.
 
 ---
 
-## 🧠 How It Works
+## 📴 Offline Mode (No API Key)
 
-* **Frontend**: Uses JavaScript's Web Speech API to capture voice
-* **Backend**: Flask receives the text input and responds with rule-based logic
-* **Output**: Python uses `pyttsx3` to speak the response aloud (from your machine)
+Use fallback mode if no OpenAI access:
+
+```bash
+python offline_gpt.py
+```
+
+Returns generic responses like:
+
+> You said: “Hello”
+> Bot: Hello there!
+
+---
+
+## 🌐 Why Web Version May Not Work Online
+
+* Microphone access is blocked in non-HTTPS public sites
+* API keys can’t be safely exposed in frontend
+* GitHub Pages is static and doesn’t support Python
+
+✅ Best used **locally** for full features.
 
 ---
 
 ## 📦 requirements.txt
 
-```txt
-Flask==3.0.2
-SpeechRecognition==3.14.3
-pyttsx3==2.90
-pyaudio==0.2.14
+```
+Flask
+openai
+python-dotenv
+SpeechRecognition
+PyAudio
+pyttsx3
+gTTS
+```
+
+Install with:
+
+```bash
+pip install -r requirements.txt
 ```
 
 ---
 
-## 🔮 Future Improvements
+## 🚫 GitHub Push Issues with API Keys
 
-* Add GPT-3.5/GPT-4 support via OpenAI API
-* Use browser-based speech synthesis for full web-based interaction
-* Add conversation memory or context tracking
-* Deploy on cloud (Render, Heroku, etc.)
+If you accidentally pushed a secret:
+
+```bash
+git reset --soft HEAD~1
+# remove secret from code
+git add .
+git commit -m "Removed API key"
+git push --force
+```
+
+You can also allow push temporarily at the link GitHub provides (not recommended).
 
 ---
 
-## 🙋‍♀️ Author & Credits
+## 🙋‍♀️ Credits
 
-Developed by \[Your Name].
-Inspired by real-time speech interaction and web technologies.
+Made by **Anugraha Antoo Kanjookaran**
+GitHub: [anugrahaantoo](https://github.com/anugrahaantoo)
 
 ---
 
-## 📄 License
+🎙️ Happy talking to your chatbot! 🤖
 
-MIT License – feel free to fork, modify, and contribute!
+```
+
+---
+
+Let me know if you’d like the `requirements.txt` shown here as well.
+```
