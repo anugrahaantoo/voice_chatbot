@@ -6,7 +6,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-# 🔑 Your OpenAI API key
+# Your OpenAI API key
 openai.api_key = os.getenv("OPENAI_API_KEY")
 # Initialize recognizer and TTS
 recognizer = sr.Recognizer()
