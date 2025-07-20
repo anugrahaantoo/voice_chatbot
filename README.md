@@ -148,12 +148,7 @@ pip install -r requirements.txt
 ---
 
 
----
 
-## 🙋‍♀️ Credits
-
-Made by **Anugraha Antoo Kanjookaran**
-GitHub: [anugrahaantoo](https://github.com/anugrahaantoo)
 
 ---
 
