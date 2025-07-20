@@ -1,16 +1,4 @@
-Perfect! Below is a complete and well-structured `README.md` you can use for your GitHub repository.
 
-It includes:
-
-* Project overview
-* Features
-* Setup instructions
-* How to run the app
-* Description of each file
-
----
-
-## 📘 `README.md` for GitHub
 
 ```markdown
 # 🎤 Voice Chatbot Web App (Flask + Speech Recognition + TTS)
