@@ -1,9 +1,13 @@
 import openai
 import speech_recognition as sr
 import pyttsx3
+import os
+
+from dotenv import load_dotenv
+load_dotenv()
 
 # 🔑 Your OpenAI API key
-openai.api_key = "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"
+openai.api_key = os.getenv("OPENAI_API_KEY")
 # Initialize recognizer and TTS
 recognizer = sr.Recognizer()
 engine = pyttsx3.init()
