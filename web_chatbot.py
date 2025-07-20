@@ -4,7 +4,7 @@ import pyttsx3
 app = Flask(__name__)
 engine = pyttsx3.init()
 
-# Simple logic
+
 def get_bot_response(message):
     msg = message.lower()
     if "hello" in msg:
