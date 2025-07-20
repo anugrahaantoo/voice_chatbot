@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🎤 Voice Chatbot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      width: 95%;
+      text-align: center;
+    }
+
+    button {
+      font-size: 16px;
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 6px;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    #chatHistory {
+      text-align: left;
+      margin-top: 20px;
+      padding: 15px;
+      height: 250px;
+      overflow-y: auto;
+      background: #f1f1f1;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .user { color: #333; margin: 8px 0; }
+    .bot { color: #007bff; margin: 8px 0; }
+
+    #status {
+      font-style: italic;
+      color: gray;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🎙️ Speak to the Chatbot</h2>
+
+    <button onclick="startVoice()">🎤 Start Talking</button>
+
+    <div id="chatHistory"></div>
+    <p id="status"></p>
+  </div>
+
+  <script>
+    let recognition;
+
+    function startVoice() {
+      recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+      recognition.lang = 'en-US';
+      recognition.interimResults = false;
+      recognition.continuous = false;
+
+      recognition.start();
+      document.getElementById("status").textContent = "🎧 Listening...";
+
+      recognition.onresult = async function(event) {
+        const spoken = event.results[0][0].transcript;
+        appendToChat("🧑 You: " + spoken, "user");
+
+        const res = await fetch("/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: spoken })
+        });
+
+        const data = await res.json();
+        appendToChat("🤖 Bot: " + data.reply, "bot");
+        document.getElementById("status").textContent = "✅ Finished Listening";
+      };
+
+      recognition.onerror = function(event) {
+        alert("Voice recognition error: " + event.error);
+        document.getElementById("status").textContent = "❌ Error: " + event.error;
+      };
+
+      recognition.onend = function() {
+        document.getElementById("status").textContent = "🛑 Listening stopped.";
+      };
+    }
+
+    function appendToChat(text, cls) {
+      const chatBox = document.getElementById("chatHistory");
+      const msg = document.createElement("div");
+      msg.className = cls;
+      msg.textContent = text;
+      chatBox.appendChild(msg);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+  </script>
+</body>
+</html>
